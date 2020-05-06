@@ -17,15 +17,15 @@ def import_data(input_file, input_headers)
   data = []
   
   CSV.foreach(input_file, {col_sep: ', ', quote_char: '"', headers: true}) do |row|
-    newObj = {}
+    new_obj = {}
     i = 0
 
     for key in input_headers do
-      newObj[key] = row[i]
+      new_obj[key] = row[i]
       i += 1
     end
 
-    data << newObj
+    data << new_obj
   end
   
   data
