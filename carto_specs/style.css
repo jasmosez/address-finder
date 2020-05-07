@@ -1,0 +1,9 @@
+#layer {
+  marker-width: ramp([deaths], range(8, 28), equal(5));
+  marker-fill: #d41500;
+  marker-fill-opacity: 0.4;
+  marker-allow-overlap: true;
+  marker-line-width: 0.5;
+  marker-line-color: #FFFFFF;
+  marker-line-opacity: 1;
+}

@@ -6,17 +6,17 @@ require 'dotenv/load'
 
 
 input_file = './test.csv'
-input_headers = [:facility, :county, :deaths]
+input_headers = [:facility, :county, :confirmed, :presumed]
 
 output_file = "./updated_test.csv"
-output_headers = [:facility, :deaths, :name, :formatted_address, :county, :lat, :lng, :place_id, :results]
+output_headers = [:facility, :confirmed, :presumed, :total, :name, :formatted_address, :county, :lat, :lng, :place_id, :results]
 
 
 # GET DATA FROM CSV FILE
 def import_data(input_file, input_headers)
   data = []
   
-  CSV.foreach(input_file, {col_sep: ', ', quote_char: '"', headers: true}) do |row|
+  CSV.foreach(input_file, {col_sep: ';', quote_char: '"', headers: true}) do |row|
     new_obj = {}
     i = 0
 
@@ -27,7 +27,7 @@ def import_data(input_file, input_headers)
 
     data << new_obj
   end
-  
+  byebug
   data
 end
 
@@ -45,12 +45,24 @@ def add_place_data(data)
     resp = Faraday.get(url, parameters, {'Accept': 'application/json'})
     json = JSON.parse(resp.body)
 
-    item[:formatted_address] = json["candidates"].first["formatted_address"]
-    item[:lat] = json["candidates"].first["geometry"]["location"]["lat"]
-    item[:lng] = json["candidates"].first["geometry"]["location"]["lng"]
-    item[:name] = json["candidates"].first["name"]
-    item[:place_id] = json["candidates"].first["place_id"]
-    item[:results] = json["candidates"].length
+    if !!json["candidates"] && json["candidates"].length > 0
+
+      item[:formatted_address] = json["candidates"].first["formatted_address"]
+      item[:lat] = json["candidates"].first["geometry"]["location"]["lat"]
+      item[:lng] = json["candidates"].first["geometry"]["location"]["lng"]
+      item[:name] = json["candidates"].first["name"]
+      item[:place_id] = json["candidates"].first["place_id"]
+      item[:results] = json["candidates"].length
+    else 
+      item[:formatted_address] = ""
+      item[:lat] = ""
+      item[:lng] = ""
+      item[:name] = ""
+      item[:place_id] = ""
+      item[:results] = 0
+    end
+
+    item[:total] = item[:confirmed].to_i + item[:presumed].to_i
 
     puts item
     item

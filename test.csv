@@ -1,3 +1,2 @@
-facility, county, deaths
-"Schervier Nursing Care Center", "Bronx", 6
-"Methodist Home for Nursing and Rehabilitation", "Bronx", 6
+facility;county;confirmed;presumed
+SOLDIERS AND SAILORS MEMORIAL HOSPITAL;Yates;2;0
