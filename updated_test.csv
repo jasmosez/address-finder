@@ -1,3 +1,2 @@
-facility,deaths,name,formatted_address,county,lat,lng,place_id,results
-Schervier Nursing Care Center,6,Schervier Rehabilitation and Nursing Center,"2975 Independence Ave, The Bronx, NY 10463, United States",Bronx,40.8832253,-73.9187839,ChIJ2eDiKurzwokRH3ukw9V9Yog,1
-Methodist Home for Nursing and Rehabilitation,6,Methodist Home Nursing and Rehabilitation,"4499 Manhattan College Pkwy, The Bronx, NY 10471, United States",Bronx,40.8904619,-73.9031434,ChIJ97bOmbrzwokRr6z-Sn2zpq0,1
+facility,confirmed,presumed,total,name,formatted_address,county,lat,lng,place_id,results
+SOLDIERS AND SAILORS MEMORIAL HOSPITAL,2,0,2,Soldiers and Sailors Memorial Hospital,"418 N Main St, Penn Yan, NY 14527, United States",Yates,42.671208,-77.06173869999999,ChIJ9cnvECrk0IkReSdOuSvfKfk,1
