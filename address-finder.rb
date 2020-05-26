@@ -5,10 +5,10 @@ require 'byebug'
 require 'dotenv/load'
 
 
-input_file = './test.csv'
+input_file = './facilitiesMay20.csv'
 input_headers = [:facility, :county, :confirmed, :presumed]
 
-output_file = "./updated_test.csv"
+output_file = "./updated_facilitiesMay20.csv"
 output_headers = [:facility, :confirmed, :presumed, :total, :name, :formatted_address, :county, :lat, :lng, :place_id, :results]
 
 
